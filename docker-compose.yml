@@ -14,7 +14,6 @@ services:
       - planner_network
     ports:
       - "80:80"
-      - "443:443"
     links:
       - server
 
