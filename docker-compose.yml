@@ -1,0 +1,23 @@
+services:
+  server:
+    build: ./server
+    networks:
+      - planner_network
+    ports:
+      - "5000:8000"
+
+  proxy:
+    build: ./nginx
+    depends_on:
+      - server
+    networks:
+      - planner_network
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - server
+
+networks:
+  planner_network:
+    driver: bridge
